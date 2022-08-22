@@ -34,7 +34,7 @@ export class ChatService {
   }
 
 
-  // Strart the connection
+  // Start the connection
   public async start() {
     try {
       await this.connection.start();

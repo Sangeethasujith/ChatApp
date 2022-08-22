@@ -1,0 +1,5 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ElasticKibanaLoggingVerify/ElasticKibanaLoggingVerify/obj/Release/net6.0

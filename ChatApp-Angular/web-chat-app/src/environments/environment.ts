@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   hubConnectionURL: 'https://localhost:7240/chatsocket',
-  broadcastURL: 'https://localhost:7240/api/chat/send'
+  broadcastURL: 'https://localhost:7240/api/chat/send',
+  urlAddress: 'https://localhost:7240'
 };
 
 /*

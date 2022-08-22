@@ -1,32 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-  <div class="ud-header">
-    <h2 class="text-center">Public Chat</h2>
-  </div> 
-  
-  <div class="body-footer">
-  
-    <div class="ud-body">
-      <div class="msg-box">
-        <ul>
-          <li *ngFor="let mObj of msgInboxArray" [ngClass]="mObj.user === msgDto.user ? 'in-msg' : 'ex-msg'">{{mObj.user}} :<br /><span class="msg-italic-style">{{mObj.msgText}}</span></li>
-        </ul>
-      </div>
-      <div class="ud-flex-row">
-        <input type="text" placeholder="Type message here" class="msg-input" [(ngModel)]="msgDto.msgText"  />
-        <button class="send-btn" (click)= "send()"><i class="fa fa-paper-plane"></i></button>
-      </div>
-      <input type="text" placeholder="Your name" class="name-box" [(ngModel)]="msgDto.user" />
-    </div>
-  
-  </div>
-</body>
-</html>
+
+<app-nav></app-nav>
+  <h1>Welcome to Chit Chat</h1>
+
+<router-outlet></router-outlet>

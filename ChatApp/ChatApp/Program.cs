@@ -1,47 +1,26 @@
-using Public_Chat.Hubs;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddCors(options =>
+namespace ChatApp
 {
-    options.AddPolicy("_myAllowSpecificOrigins",
-        builder =>
+    public class Program
+    {
+        public static void Main(string[] args)
         {
-            builder.WithOrigins("https://localhost:4200")
-                   .AllowAnyHeader()
-                   .AllowAnyMethod()
-                   .SetIsOriginAllowed((x) => true)
-                   .AllowCredentials();
-        });
-});
-builder.Services.AddSignalR();
+            CreateHostBuilder(args).Build().Run();
+        }
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+    }
 }
-
-app.UseHttpsRedirection();
-app.UseRouting();
-app.UseCors("_myAllowSpecificOrigins");
-
-app.UseAuthorization();
-
-app.MapControllers();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-    endpoints.MapHub<ChatHub>("/chatsocket");     // path will look like this https://localhost:44379/chatsocket 
-});
-
-app.Run();
